@@ -48,14 +48,14 @@ class Post extends MY_Controller {
 		$this->load->model('Post_model');
 		$this->load->model('Category_model');
 		$this->load->model('User_model');
-		$post = $this->Post_model->get($id);
+		$post = $this->Post_model->select($id);
 		$post->read += 1;
 		$update = array(
 			'read' => $post->read);
 		$this->Post_model->update($post->id,$update);
 
-		$post->category = $this->Category_model->get($post->category_id);
-		$post->user = $this->User_model->get($post->user_id);
+		$post->category = $this->Category_model->select($post->category_id);
+		$post->user = $this->User_model->select($post->user_id);
 		$data = array(
 			'title' => $post->title,
 			'post' => $post);
@@ -82,7 +82,7 @@ class Post extends MY_Controller {
 		$comments = $this->Comment_model->getByPost($post_id);
 		if($comments){
 			foreach($comments as $comment){
-				$comment->user = $this->User_model->get($comment->user_id);
+				$comment->user = $this->User_model->select($comment->user_id);
 			}
 		}
 		$data = array(
@@ -131,7 +131,7 @@ class Post extends MY_Controller {
 
 		foreach($posts as $post){
 			$post->category = $_categories[$post->category_id];
-			$post->user = $this->User_model->get($post->user_id);
+			$post->user = $this->User_model->select($post->user_id);
 		}
 
 
@@ -159,18 +159,14 @@ class Post extends MY_Controller {
 
 		$post = null;
 		if($id){
-			$post = $this->Post_model->get($id);
-			$post->category = $this->Category_model->get($post->category_id);			
+			$post = $this->Post_model->select($id);
+			$post->category = $this->Category_model->select($post->category_id);			
 		}
 		$categories = $this->Category_model->get_all();
 
-		$csrf = array(
-	        'name' => $this->security->get_csrf_token_name(),
-	        'hash' => $this->security->get_csrf_hash()
-		);
+
 		$data = array(
 			'title' => 'Create',
-			'csrf' => $csrf,
 			'post' => $post,
 			'categories' => $categories
 			);
@@ -188,6 +184,7 @@ class Post extends MY_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 		    $output['error'] = form_error_array();
+		    $output['csrf'] = true;
 		}
 		else
 		{
@@ -211,7 +208,7 @@ class Post extends MY_Controller {
 
 		   	
 
-		   	$post = $this->Post_model->get($post_id);
+		   	$post = $this->Post_model->select($post_id);
 		   	$update = array(
 		   		'comment' => $post->comment+1
 		   		);
@@ -248,6 +245,7 @@ class Post extends MY_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 		    $output['error'] = form_error_array();
+		    $output['csrf'] = true;
 		}
 		else
 		{
@@ -281,7 +279,7 @@ class Post extends MY_Controller {
 
 		   	
 
-		   	$category = $this->Category_model->get($category_id);
+		   	$category = $this->Category_model->select($category_id);
 		   	$update = array(
 		   		'count' => $category->count+1
 		   		);

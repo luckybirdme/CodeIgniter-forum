@@ -101,6 +101,8 @@ function init(){
     }
 
 
+    initAjaxCSRF();
+
 }
 
 function clickCategory(){
@@ -244,7 +246,31 @@ function ajaxPost(e,obj,url){
 }
 
 function refreshFormCSRF(data){
-	$("input[name='"+data.name+"']").val(data.hash);
+	CSRF_HASH = data.hash;
+}
+
+function initAjaxCSRF(){
+
+	$(document).ajaxSend(function (event,xhr,options) {
+		var csrf_name = CSRF_NAME;
+		var csrf_hash = CSRF_HASH;
+		var type = options.type.toUpperCase();
+		if (type == 'POST') {
+			if(options.data == null || options.data == undefined || options.data == ""){
+				options.data = {};
+				options.data[csrf_name] = csrf_hash;
+			}else{
+				if(typeof(options.data) == "object"){
+					options.data[csrf_name] = csrf_hash;
+				}else{
+					options.data += "&"+csrf_name+"="+csrf_hash;
+				}
+			}
+		  		
+		}
+	});
+	
+
 }
 
 function showBtnLoading(){
@@ -289,12 +315,7 @@ function ajaxUploadImage(){
 	hideAlertNotice();
 	showBtnLoading();
 	var url = "/upload/image";
-	var csrf = $("#csrf_token");
-	var csrf_name = csrf.attr("name");
-	var csrf_hash = csrf.attr("value");
 	var data = {};
-	data[csrf_name] = csrf_hash;
-
 	$.ajaxFileUpload({
 		url:url,
 		timeout:60000,

@@ -24,10 +24,10 @@ if ( ! function_exists('json_output'))
 
 	function json_output($data)
 	{
-		if((isset($data['state']) && $data['state'] == false) || isset($data['csrf'])){
+		if(isset($data['csrf']) && $data['csrf']){
 			$csrf = array(
-				'name' => get_instance()->security->get_csrf_token_name(),
-			    'hash' => get_instance()->security->get_csrf_hash()
+				'name' => csrf_token('name'),
+			    'hash' => csrf_token('hash')
 			);
 			$data['csrf'] = $csrf;
 		}
@@ -39,6 +39,30 @@ if ( ! function_exists('json_output'))
 		exit;
 	}
 }
+
+if ( ! function_exists('csrf_token'))
+{
+
+	function csrf_token($key)
+	{
+		if($key == 'name'){
+			$val = get_instance()->security->get_csrf_token_name();
+		}else if($key == 'hash'){
+			$val = get_instance()->security->get_csrf_hash();
+		}else{
+			$val = array(
+				'name' => get_instance()->security->get_csrf_token_name(),
+				'hash' => get_instance()->security->get_csrf_hash()
+			);
+		}
+
+		return $val;
+	}
+}
+
+
+
+
 
 if ( ! function_exists('form_error_array'))
 {

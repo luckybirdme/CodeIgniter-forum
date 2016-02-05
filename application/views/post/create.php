@@ -11,7 +11,6 @@
 
 
 					<form class="form-horizontal" id="createForm" />
-						<input type="hidden" id="csrf_token" name="<?php echo $csrf['name'];?>" value="<?php echo $csrf['hash'];?>" />
 						<input type="hidden" id="id" name="id" value="<?php if($post) echo $post->id;?>" />						
 						
 		              <div class="control-group">

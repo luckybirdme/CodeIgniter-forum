@@ -15,7 +15,7 @@
 									<img src=<?php echo image_url().$user->avatar;?> >
 								</a>
 								<span class="user-name"><a href="/user"><?php echo $user->name;?></a></span>
-								<input type="hidden" name="user_id" id="user_id" value="<?php if(isset($user)) echo $user->id; ?>" />
+								
 
 							</div>
 						</div>

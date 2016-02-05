@@ -33,7 +33,7 @@ class User extends MY_Controller {
 	{
 		$id = $this->input->get('id',TRUE);
 		$this->load->model('User_model');
-		$user = $this->User_model->get($id);
+		$user = $this->User_model->select($id);
 
 		if(!$user){
 			$user = $this->session->user;
@@ -62,7 +62,7 @@ class User extends MY_Controller {
 		$id = $this->input->get('id',TRUE);
 		if($id){
 			$this->load->model('User_model');
-			$data['user'] = $this->User_model->get($id);
+			$data['user'] = $this->User_model->select($id);
 		}
 		else if($this->session->user){
 			$data['user'] = $this->session->user;
@@ -73,14 +73,10 @@ class User extends MY_Controller {
 
 	public function setting(){
 		$this->load->helper('form');
-		$csrf = array(
-	        'name' => $this->security->get_csrf_token_name(),
-	        'hash' => $this->security->get_csrf_hash()
-		);
+
 		$data = array(
-			'title' => 'Setting',
-			'csrf' => $csrf
-			);
+			'title' => 'Setting'
+		);
 
 		$this->load->view('user/setting',$data);		
 	}
@@ -116,6 +112,7 @@ class User extends MY_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 		    $output['error'] = form_error_array();
+		    $output['csrf'] = true;
 		}
 		else
 		{
@@ -126,7 +123,7 @@ class User extends MY_Controller {
 		    	'name' => $this->input->post('name',TRUE),
 		    	'email' => $this->input->post('email',TRUE),
 		    	'password' => encrypt_password($this->input->post('password',TRUE)),
-		    	'avatar' => 'public/static/img/default-avatar.png'
+		    	'avatar' => '/public/static/img/default-avatar.png'
 		    	);
 
 		   	$id = $this->User_model->insert($user);
@@ -152,6 +149,7 @@ class User extends MY_Controller {
 			);
 		if ($this->form_validation->run() == FALSE){
 		    $output['error'] = form_error_array();
+		    $output['csrf'] = true;
 		}
 		else
 		{
@@ -170,8 +168,9 @@ class User extends MY_Controller {
 		    }else{
 
 		    	$output['error'] = array(
-		    		'name' => 'Name or Password is not right'
+		    		'email' => 'Email or Password is not right'
 		    		);
+		    	$output['csrf'] = true;
 
 		    }
 		    
@@ -214,6 +213,7 @@ class User extends MY_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 		    $output['error'] = form_error_array();
+		    $output['csrf'] = true;
 		}
 		else
 		{
@@ -226,7 +226,7 @@ class User extends MY_Controller {
 		    	);
 
 		   	$this->User_model->update($id,$user);
-		   	$user = $this->User_model->get($id);
+		   	$user = $this->User_model->select($id);
 		   	$this->session->set_userdata('user',$user);
 		   	$url = base_url('/user/setting');
 		   	$output['redirect'] = $url;

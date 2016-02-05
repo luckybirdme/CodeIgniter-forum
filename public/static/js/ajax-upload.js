@@ -73,7 +73,7 @@ jQuery.extend({
         // TODO introduce global settings, allowing the client to modify them for all requests, not only timeout		
         s = jQuery.extend({}, jQuery.ajaxSettings, s);
         var id = new Date().getTime()        
-		var form = jQuery.createUploadForm(id, s.fileElementId, (typeof(s.data)=='undefined'?false:s.data),s.fileElement);
+		//var form = jQuery.createUploadForm(id, s.fileElementId, (typeof(s.data)=='undefined'?false:s.data),s.fileElement);
 		var io = jQuery.createUploadIframe(id, s.secureuri);
 		var frameId = 'jUploadFrame' + id;
 		var formId = 'jUploadForm' + id;		
@@ -85,8 +85,12 @@ jQuery.extend({
         var requestDone = false;
         // Create the request object
         var xml = {}   
-        if ( s.global )
-            jQuery.event.trigger("ajaxSend", [xml, s]);
+        if ( s.global ){
+        	jQuery.event.trigger("ajaxSend", [xml, s]);
+        }
+        // 提交前修改post data
+        var form = jQuery.createUploadForm(id, s.fileElementId, (typeof(s.data)=='undefined'?false:s.data),s.fileElement);
+            
         // Wait for a response to come back
         var uploadCallback = function(isTimeout)
 		{			

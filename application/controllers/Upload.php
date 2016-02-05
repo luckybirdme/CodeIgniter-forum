@@ -56,6 +56,7 @@ class Upload extends MY_Controller {
 		$this->load->library('upload', $config);
 
 		$field_name = "imageInput";
+		$output['csrf'] = true;
    		if ( ! $this->upload->do_upload($field_name))
         {
             $output['state'] = false;
@@ -69,7 +70,6 @@ class Upload extends MY_Controller {
         else
         {
             $output['state'] = true;
-            $output['csrf'] = true;
             $avatar = '/'.$upload_directory.'/'.$file_name;
             $output['success'] = array(
             	'url' => $avatar);

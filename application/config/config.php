@@ -27,7 +27,7 @@ $config['base_url'] = 'http://localhost.CodeIgniter';
 
 $config['static_url'] = 'http://localhost.CodeIgniter/public/static';
 $config['upload_path'] = FCPATH;
-$config['image_url'] = 'http://localhost.CodeIgniter';
+$config['image_url'] = 'http://localhost.CodeIgniter/';
 
 
 /*

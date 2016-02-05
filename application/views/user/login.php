@@ -9,8 +9,7 @@
 				<div class="panel-heading"><?php echo $title; ?></div>
 				<div class="panel-body">
 
-
-					<?php echo form_open('', array('class'=>'form-horizontal','id' => 'loginForm'));?>
+					<form class="form-horizontal" id="loginForm" />
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Email</label>

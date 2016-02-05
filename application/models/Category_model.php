@@ -15,15 +15,15 @@ class Category_model extends MY_Model {
     }
 
     public function insert($data){
-        return $this->insert($this->table_name,$data);
+        return parent::base_insert($this->table_name,$data);
     }
 
-    public function get($id){
-        return $this->get($this->table_name,$id);
+    public function select($id){
+        return parent::base_select($this->table_name,$id);
     }
 
     public function update($id,$data){
-        $this->update($this->table_name,$id,$data);
+        parent::base_update($this->table_name,$id,$data);
     }
 
     public function get_all(){

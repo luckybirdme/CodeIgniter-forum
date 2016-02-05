@@ -8,7 +8,6 @@
 				<div class="panel-heading"><?php echo $title; ?></div>
 				<div class="panel-body">
 					<form class="form-horizontal" id="settingForm" />
-						<input type="hidden" id="csrf_token" name="<?php echo $csrf['name'];?>" value="<?php echo $csrf['hash'];?>" />
 						<input type="hidden" id="id" name="id" value="<?php echo $this->session->user->id;?>" />						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Avatar</label>

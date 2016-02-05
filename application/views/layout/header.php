@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="<?php echo static_url(); ?>/css/main.css">
 		<script type="text/javascript">
 			var BASE_URL = "<?php echo base_url(); ?>";
+			var CSRF_NAME = "<?php echo csrf_token('name');?>";
+			var CSRF_HASH = "<?php echo csrf_token('hash');?>";
 		</script>
 	</head>
 	<body>
