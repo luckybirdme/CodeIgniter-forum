@@ -21,7 +21,6 @@ class MY_Model extends CI_Model
     }
 
     public function base_update($table,$id,$data){
-    	$data['update_at'] = date("Y-m-d H:i:s");
         $this->db->where('id', $id);
         $this->db->update($table, $data);
     }

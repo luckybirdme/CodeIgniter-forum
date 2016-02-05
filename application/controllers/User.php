@@ -207,7 +207,8 @@ class User extends MY_Controller {
 
 		    $user = array(
 		    	'name' => $name,
-		    	'avatar' => $avatar
+		    	'avatar' => $avatar,
+		    	'update_at' => date("Y-m-d H:i:s")
 		    	);
 
 		   	$this->User_model->update($user_id,$user);

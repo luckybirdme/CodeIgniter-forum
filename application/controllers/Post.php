@@ -51,7 +51,8 @@ class Post extends MY_Controller {
 		$post = $this->Post_model->select($post_id);
 		$post->read += 1;
 		$update = array(
-			'read' => $post->read);
+			'read' => $post->read
+			);
 		$this->Post_model->update($post->id,$update);
 
 		$post->category = $this->Category_model->select($post->category_id);
@@ -210,7 +211,8 @@ class Post extends MY_Controller {
 
 		   	$post = $this->Post_model->select($post_id);
 		   	$update = array(
-		   		'comment' => $post->comment+1
+		   		'comment' => $post->comment+1,
+		   		'update_at' => date("Y-m-d H:i:s")
 		   		);
 
 		   	$this->Post_model->update($post_id,$update);
@@ -274,6 +276,7 @@ class Post extends MY_Controller {
 		    if($post_id){
 		    	$_post = $this->Post_model->select($post_id);
 		    	if($this->session->user->id == $_post->user_id){
+		    		$post['update_at'] = date("Y-m-d H:i:s");
 		    		$this->Post_model->update($post_id,$post);
 		    	}
 		    	
@@ -285,7 +288,8 @@ class Post extends MY_Controller {
 
 		   	$category = $this->Category_model->select($category_id);
 		   	$update = array(
-		   		'count' => $category->count+1
+		   		'count' => $category->count+1,
+		   		'update_at' => date("Y-m-d H:i:s")
 		   		);
 
 		   	$this->Category_model->update($category_id,$update);
