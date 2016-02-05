@@ -11,7 +11,7 @@
 
 
 					<form class="form-horizontal" id="createForm" />
-						<input type="hidden" id="id" name="id" value="<?php if($post) echo $post->id;?>" />						
+						<input type="hidden" id="post_id" name="post_id" value="<?php if($post) echo $post->id;?>" />						
 						
 		              <div class="control-group">
 		                <label class="control-label">Title</label>

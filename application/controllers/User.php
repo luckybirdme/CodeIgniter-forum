@@ -55,22 +55,6 @@ class User extends MY_Controller {
 		$this->load->view('user/login',$data);		
 	}
 
-	public function home(){
-		$data = array(
-			'title' => 'Home'
-			);
-
-		$id = $this->input->get('id',TRUE);
-		if($id){
-			$this->load->model('User_model');
-			$data['user'] = $this->User_model->select($id);
-		}
-		else if($this->session->user){
-			$data['user'] = $this->session->user;
-		}
-
-		$this->load->view('user/home',$data);		
-	}
 
 	public function setting(){
 		$this->load->helper('form');
@@ -191,7 +175,7 @@ class User extends MY_Controller {
 		$this->load->library('form_validation');
 		$check = 'required|min_length[5]|max_length[12]';
 		$name = $this->input->post('name',TRUE);
-		$id = $this->input->post('id',TRUE);
+		$user_id = $this->input->post('user_id',TRUE);
 		$avatar = $this->input->post('userAvatar',TRUE);
 
 		if($this->session->user->name != $name){
@@ -226,8 +210,8 @@ class User extends MY_Controller {
 		    	'avatar' => $avatar
 		    	);
 
-		   	$this->User_model->update($id,$user);
-		   	$user = $this->User_model->select($id);
+		   	$this->User_model->update($user_id,$user);
+		   	$user = $this->User_model->select($user_id);
 		   	$this->session->set_userdata('user',$user);
 		   	$url = base_url('/user/setting');
 		   	$output['redirect'] = $url;

@@ -153,13 +153,13 @@ class Post extends MY_Controller {
 
 	public function create(){
 		$this->load->helper('form');
-		$id = $this->input->get('id',TRUE);
+		$post_id = $this->input->get('post_id',TRUE);
 		$this->load->model('Post_model');
 		$this->load->model('Category_model');
 
 		$post = null;
-		if($id){
-			$post = $this->Post_model->select($id);
+		if($post_id){
+			$post = $this->Post_model->select($post_id);
 			$post->category = $this->Category_model->select($post->category_id);			
 		}
 		$categories = $this->Category_model->get_all();
@@ -252,7 +252,7 @@ class Post extends MY_Controller {
 
 		    $output['state'] = true;
 
-			$id = $this->input->post('id',TRUE);
+			$post_id = $this->input->post('post_id',TRUE);
 			$title = $this->input->post('title',TRUE);
 			$category_id = $this->input->post('category_id',TRUE);
 			$markdown = $this->input->post('markdown',TRUE);
@@ -271,10 +271,10 @@ class Post extends MY_Controller {
 		    	'user_id' => $this->session->user->id
 		    	);
 
-		    if($id){
-		    	$_post = $this->Post_model->select($id);
+		    if($post_id){
+		    	$_post = $this->Post_model->select($post_id);
 		    	if($this->session->user->id == $_post->user_id){
-		    		$this->Post_model->update($id,$post);
+		    		$this->Post_model->update($post_id,$post);
 		    	}
 		    	
 		    }else{

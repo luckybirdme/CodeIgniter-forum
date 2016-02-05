@@ -8,7 +8,7 @@
 				<div class="panel-body">
 					<?php if($this->session->user && $post->user->id == $this->session->user->id){ ?> 
 						<div>
-							<a href="/post/create?id=<?php echo $post->id;?>" class="btn btn-primary pull-right " style="margin-left:20px;">Edit</a>
+							<a href="/post/create?post_id=<?php echo $post->id;?>" class="btn btn-primary pull-right " style="margin-left:20px;">Edit</a>
 
 						</div>
 					<?php } ?>
