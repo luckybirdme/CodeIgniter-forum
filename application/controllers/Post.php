@@ -215,7 +215,7 @@ class Post extends MY_Controller {
 
 		   	$this->Post_model->update($post_id,$update);
 
-		   	$url = base_url('/post/show?id='.$post_id);
+		   	$url = base_url('/post/show?post_id='.$post_id);
 		   	$output['redirect'] = $url;
 		}
 
