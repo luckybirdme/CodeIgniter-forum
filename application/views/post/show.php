@@ -31,15 +31,16 @@
 							<input type="hidden" name="post_id" id="post_id" value="<?php echo $post->id;?>">
 							<div class="control-group">
 								<div class="controls">
-									<textarea name="content" rows="3" cols="50" class="form-control input-xlarge">
+									<textarea name="content" id="content" rows="3" cols="50" class="form-control input-xlarge">
 									</textarea>
 								</div>
 								<div id="contentAlert" class="alert-required">Email is not right</div>
 							</div>
 							<hr>
+
 							<div class="control-group">
 								<div class="controls">
-									<button type="submit" class="btn btn-primary">Submit</button>
+									<?php echo form_button(array('class'=> 'btn btn-primary','name'=>'submit','id'=>'submit','type'=>'submit','content'=>'Submit')); ?>
 								</div>
 								<div id="submitAlert" class="alert-required">Email is not right</div>
 							</div>

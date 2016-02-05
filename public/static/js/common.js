@@ -50,10 +50,10 @@ function init(){
 	}
 
 
-	var commentObj = $("#categoryForm");
-	if(commentObj.length > 0 ){
-		commentObj.submit(function(e) {
-			ajaxPost(e,commentObj,"/category/createPost");
+	var categoryObj = $("#categoryForm");
+	if(categoryObj.length > 0 ){
+		categoryObj.submit(function(e) {
+			ajaxPost(e,categoryObj,"/category/createPost");
 		});
 	}
 

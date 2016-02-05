@@ -98,7 +98,7 @@ class Post extends MY_Controller {
 	}
 	public function query(){
 
-		$limit = 3;
+		$limit = 10;
 		$page = $this->input->get('page',TRUE);
 		if($page){
 			$offest = ($page - 1)*$limit;
@@ -272,7 +272,11 @@ class Post extends MY_Controller {
 		    	);
 
 		    if($id){
-		    	$this->Post_model->update($id,$post);
+		    	$_post = $this->Post_model->select($id);
+		    	if($this->session->user->id == $_post->user_id){
+		    		$this->Post_model->update($id,$post);
+		    	}
+		    	
 		    }else{
 		    	$id = $this->Post_model->insert($post);
 		    }
