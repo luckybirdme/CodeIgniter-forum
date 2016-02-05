@@ -86,7 +86,7 @@
 						<div id="categories_list" class="sidebar-tag-container">
 
 						</div>
-						<?php if(isset($this->session->user)){ ?> 
+						<?php if($this->session->has_userdata('user')){ ?> 
 							<div class="add-topic-btn">
 									<a href="/category/create" class="btn btn-primary">Add Category</a>
 							</div>
