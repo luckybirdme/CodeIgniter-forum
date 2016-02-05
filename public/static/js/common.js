@@ -50,6 +50,13 @@ function init(){
 	}
 
 
+	var commentObj = $("#categoryForm");
+	if(commentObj.length > 0 ){
+		commentObj.submit(function(e) {
+			ajaxPost(e,commentObj,"/category/createPost");
+		});
+	}
+
 	var uploadUserAvatar = $("#uploadUserAvatar");
 	if(uploadUserAvatar.length > 0 ){
 

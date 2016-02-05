@@ -86,6 +86,9 @@
 						<div id="categories_list" class="sidebar-tag-container">
 
 						</div>
+						<div class="add-topic-btn">
+								<a href="/category/create" class="btn btn-primary">Add Category</a>
+						</div>
 					</div>
 				</div>
 			</div>
