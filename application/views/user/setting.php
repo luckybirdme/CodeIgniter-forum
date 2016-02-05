@@ -14,7 +14,7 @@
 							<div class="col-md-5">
 								<div class="inner">
 									<div>
-										<a href="/user/home" class="user-avatar">
+										<a href="/user?user_id=<?php echo $this->session->user->id;?>" class="user-avatar">
 											<img src=<?php echo image_url().$this->session->user->avatar;?> id="avatar">
 											<input name="userAvatar" id="userAvatar" value="<?php echo $this->session->user->avatar;?>" type="hidden">
 										</a>

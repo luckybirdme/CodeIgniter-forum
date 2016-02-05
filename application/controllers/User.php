@@ -31,9 +31,9 @@ class User extends MY_Controller {
 
 	public function index()
 	{
-		$id = $this->input->get('id',TRUE);
+		$user_id = $this->input->get('user_id',TRUE);
 		$this->load->model('User_model');
-		$user = $this->User_model->select($id);
+		$user = $this->User_model->select($user_id);
 
 		if(!$user){
 			$user = $this->session->user;
@@ -41,7 +41,8 @@ class User extends MY_Controller {
 
 		$data = array(
 			'title' => 'Home',
-			'user' => $user
+			'user' => $user,
+			'user_id' => $user->id
 			);
 		$this->load->view('user/index',$data);
 	}

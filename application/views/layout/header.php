@@ -50,10 +50,10 @@
 
 							<div class="inner">
 								<div>
-									<a href="/user" class="user-avatar">
+									<a href="/user?user_id=<?php echo $this->session->user->id;?>" class="user-avatar">
 										<img src=<?php echo image_url().$this->session->user->avatar;?> >
 									</a>
-									<span class="user-name"><a href="/user"><?php echo $this->session->user->name;?></a></span>
+									<span class="user-name"><a href="/user?user_id=<?php echo $this->session->user->id;?>"><?php echo $this->session->user->name;?></a></span>
 								</div>
 							</div>
 							<div class="add-topic-btn">
@@ -79,7 +79,7 @@
 
 
 
-			<div class="panel panel-default">
+				<div class="panel panel-default">
 					<div class="panel-heading">Categories</div>
 					<div class="panel-body"> 
 						<div><p><a href="/">Home</a></p></div>
@@ -93,6 +93,11 @@
 						<?php } ?>
 						
 					</div>
+				</div>
+
+				<div id="posts_query">
+					<input type="hidden" name="category_id" id="category_id" value="<?php if(isset($category_id)) echo $category_id; ?>" />
+					<input type="hidden" name="user_id" id="user_id" value="<?php if(isset($user_id)) echo $user_id; ?>" />
 				</div>
 			</div>
 

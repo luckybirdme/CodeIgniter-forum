@@ -22,12 +22,12 @@
 			</div>
 		</div>
 		<div class="list-group-item post-list-item">
-			<a href="/post/show/?id=<?php echo $post->id; ?>" > 
+			<a href="/post/show/?post_id=<?php echo $post->id; ?>" > 
 				<h4 class="list-group-item-heading"><?php echo $post->title;?></h4>
 			</a>
 			<div class="meta">
 				<i class="glyphicon glyphicon-time"></i><span class="timeago"><?php echo $post->update_at;?></span>
-				<i class="glyphicon glyphicon-user"></i><a href="/user?id=<?php echo $post->user->id;?>"><span><?php echo $post->user->name; ?></span></a>
+				<i class="glyphicon glyphicon-user"></i><a href="/user?user_id=<?php echo $post->user->id;?>"><span><?php echo $post->user->name; ?></span></a>
 			</div>
 		</div>
 

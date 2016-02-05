@@ -44,11 +44,11 @@ class Post extends MY_Controller {
 
 	public function show(){
 		$this->load->helper('form');
-		$id = $this->input->get('id',TRUE);
+		$post_id = $this->input->get('post_id',TRUE);
 		$this->load->model('Post_model');
 		$this->load->model('Category_model');
 		$this->load->model('User_model');
-		$post = $this->Post_model->select($id);
+		$post = $this->Post_model->select($post_id);
 		$post->read += 1;
 		$update = array(
 			'read' => $post->read);

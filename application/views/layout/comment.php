@@ -2,7 +2,7 @@
 	foreach($comments as $comment) { ?> 
 		<div class="comment-list-item">
 			<div class="meta">
-				<a href="/user?id=<?php echo $comment->user->id;?>">
+				<a href="/user?user_id=<?php echo $comment->user->id;?>">
 					<i class="glyphicon glyphicon-user"></i>
 					<span><?php echo $comment->user->name;?></span>
 				</a>

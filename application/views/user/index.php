@@ -11,10 +11,10 @@
 
 						<div class="inner">
 							<div>
-								<a href="/user" class="user-avatar">
+								<a href="/user?user_id=<?php echo $user->id;?>" class="user-avatar">
 									<img src=<?php echo image_url().$user->avatar;?> >
 								</a>
-								<span class="user-name"><a href="/user"><?php echo $user->name;?></a></span>
+								<span class="user-name"><a href="/user?user_id=<?php echo $user->id;?>"><?php echo $user->name;?></a></span>
 								
 
 							</div>
