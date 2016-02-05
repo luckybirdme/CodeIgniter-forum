@@ -43,6 +43,7 @@ class Post extends MY_Controller {
 
 
 	public function show(){
+		$this->load->helper('form');
 		$id = $this->input->get('id',TRUE);
 		$this->load->model('Post_model');
 		$this->load->model('Category_model');

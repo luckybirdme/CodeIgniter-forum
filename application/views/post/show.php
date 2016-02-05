@@ -27,7 +27,7 @@
 						<div id="showComment" class="comment-list">
 
 						</div>
-						<form id="commentForm" class="form-horizontal">
+						<?php echo form_open('', array('class'=>'form-horizontal','id' => 'commentForm'));?>
 							<input type="hidden" name="post_id" id="post_id" value="<?php echo $post->id;?>">
 							<div class="control-group">
 								<div class="controls">
