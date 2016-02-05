@@ -1,6 +1,6 @@
 #CodeIgniter-learn-forum
 
-利用CodeIgniter框架，MySQL数据库搭建简单的Forum，仅供学习之用。
+利用PHP语言，CodeIgniter框架，MySQL数据库搭建简单的Forum，仅供学习之用。
 演示地址：[Demo](http://codeigniter.luckybird.me/)
 
 **功能简介**
