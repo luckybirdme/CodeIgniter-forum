@@ -23,7 +23,7 @@ class Category_model extends MY_Model {
     }
 
     public function update($id,$data){
-        $this->update($this->table_name,$id,$data)
+        $this->update($this->table_name,$id,$data);
     }
 
     public function get_all(){
