@@ -2,9 +2,28 @@
 
 class MY_Model extends CI_Model
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
+    }
+
+
+    public function insert($table,$data){
+        $data['update_at'] = date("Y-m-d H:i:s");
+        $data['create_at'] = date("Y-m-d H:i:s");
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
+    }
+
+    public function get($table,$id){
+        $query = $this->db->get_where($table, array('id'=> $id));
+        return $query->row();
+    }
+
+    public function update($table,$id,$data){
+    	$data['update_at'] = date("Y-m-d H:i:s");
+        $this->db->where('id', $id);
+        $this->db->update($table, $data);
     }
 
 }

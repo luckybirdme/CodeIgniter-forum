@@ -15,18 +15,15 @@ class Category_model extends MY_Model {
     }
 
     public function insert($data){
-        $this->db->insert($this->table_name, $data);
-        return $this->db->insert_id();
+        return $this->insert($this->table_name,$data);
     }
 
     public function get($id){
-        $query = $this->db->get_where($this->table_name, array('id'=> $id));
-        return $query->row();
+        return $this->get($this->table_name,$id);
     }
 
     public function update($id,$data){
-        $this->db->where('id', $id);
-        $this->db->update($this->table_name, $data);
+        $this->update($this->table_name,$id,$data)
     }
 
     public function get_all(){
