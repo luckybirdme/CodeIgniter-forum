@@ -13,7 +13,7 @@
 
 获取代码
 ```
-git clone https://github.com/luckybirdme/CodeIgniter-learn-forum.git
+git clone https://github.com/luckybirdme/CodeIgniter-forum.git
 
 ```
 安装数据库
@@ -55,7 +55,6 @@ $config['image_url'] = 'http://localhost.CodeIgniter';
 
 **相关链接**
 
-GitHub地址：[CodeIgniter-learn-forum](https://github.com/luckybirdme/CodeIgniter-learn-forum)
 
 博客地址 : [LuckyBird](http://www.luckybird.me)
 
